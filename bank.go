@@ -27,7 +27,7 @@ func userChoice(choice uint8) {
 		case 1:
 			fmt.Println("Your balance is", accountBalance)
 
-			break
+			//break
 		case 2:
 			fmt.Println("Withdraw operations")
 			fmt.Print("You withdraw: ")
@@ -44,7 +44,7 @@ func userChoice(choice uint8) {
 				fmt.Println("Success... New amount:", accountBalance)
 			}
 
-			break
+			//break
 		case 3:
 			fmt.Println("Deposit operations")
 			fmt.Print("Your deposit: ")
@@ -57,11 +57,12 @@ func userChoice(choice uint8) {
 			accountBalance += depositAmount
 			fmt.Println("Success... New amount:", accountBalance)
 
-			break
+			//break
 		default:
 			fmt.Println("Invalid choice")
 
-			break
+			//break
+			return
 		}
 
 		fmt.Print("Your choice: ")
