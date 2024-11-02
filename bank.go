@@ -11,7 +11,7 @@ func main() {
 	fmt.Println("1. Check balance")
 	fmt.Println("2. Withdraw money")
 	fmt.Println("3. Deposit money")
-	fmt.Println("4. Exit")
+	fmt.Println("4. Exit\n")
 
 	var choice uint8
 	fmt.Print("Your choice: ")
@@ -27,8 +27,22 @@ func userChoice(choice uint8) {
 			fmt.Println("Your balance is", accountBalance)
 		} else if choice == 2 {
 			fmt.Println("Withdraw operations")
+			fmt.Print("You withdraw: ")
+			var withdrawAmount float64
+			fmt.Scan(&withdrawAmount)
+			if withdrawAmount > accountBalance {
+				fmt.Println("Not enough balance!")
+			} else {
+				fmt.Println("Success...")
+				accountBalance -= withdrawAmount
+			}
 		} else if choice == 3 {
 			fmt.Println("Deposit operations")
+			fmt.Print("Your deposit: ")
+			var depositAmount float64
+			fmt.Scan(&depositAmount)
+			fmt.Println("Success...")
+			accountBalance += depositAmount
 		} else {
 			fmt.Println("Invalid choice")
 		}
