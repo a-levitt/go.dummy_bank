@@ -3,13 +3,21 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 )
 
-var accountBalance float64 = 1000
+const accountBalanceFile = "user_balance.txt"
+
+func readBalanceFromFile() float64 {
+	data, _ := os.ReadFile(accountBalanceFile)
+	balanceSting := string(data)
+	balance, _ := strconv.ParseFloat(balanceSting, 64)
+	return balance
+}
 
 func writeBalanceToFile(balance float64) {
 	balanceString := fmt.Sprint(balance)
-	os.WriteFile("user_balance.txt", []byte(balanceString), 0644)
+	os.WriteFile(accountBalanceFile, []byte(balanceString), 0644)
 }
 
 func main() {
@@ -30,6 +38,7 @@ func main() {
 }
 
 func userChoice(choice uint8) {
+	accountBalance := readBalanceFromFile()
 	for choice != 4 {
 		switch choice {
 		case 1:
