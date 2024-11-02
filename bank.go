@@ -23,9 +23,12 @@ func main() {
 
 func userChoice(choice uint8) {
 	for choice != 4 {
-		if choice == 1 {
+		switch choice {
+		case 1:
 			fmt.Println("Your balance is", accountBalance)
-		} else if choice == 2 {
+
+			break
+		case 2:
 			fmt.Println("Withdraw operations")
 			fmt.Print("You withdraw: ")
 			var withdrawAmount float64
@@ -40,7 +43,9 @@ func userChoice(choice uint8) {
 				accountBalance -= withdrawAmount
 				fmt.Println("Success... New amount:", accountBalance)
 			}
-		} else if choice == 3 {
+
+			break
+		case 3:
 			fmt.Println("Deposit operations")
 			fmt.Print("Your deposit: ")
 			var depositAmount float64
@@ -51,9 +56,14 @@ func userChoice(choice uint8) {
 			}
 			accountBalance += depositAmount
 			fmt.Println("Success... New amount:", accountBalance)
-		} else {
+
+			break
+		default:
 			fmt.Println("Invalid choice")
+
+			break
 		}
+
 		fmt.Print("Your choice: ")
 		fmt.Scan(&choice)
 	}
