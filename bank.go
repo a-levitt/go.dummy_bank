@@ -2,7 +2,10 @@ package main
 
 import "fmt"
 
+var accountBalance float64 = 1000
+
 func main() {
+
 	fmt.Println("Welcom to Go Bank!")
 	fmt.Println("Choose an option:")
 	fmt.Println("1. Check balance")
@@ -14,16 +17,23 @@ func main() {
 	fmt.Print("Your choice: ")
 	fmt.Scan(&choice)
 
-	if choice == 1 {
-		fmt.Println("Balance operations")
-	} else if choice == 2 {
-		fmt.Println("Withdraw operations")
-	} else if choice == 3 {
-		fmt.Println("Deposit operations")
-	} else if choice == 4 {
-		fmt.Println("Choose an option:")
-	} else {
-		fmt.Println("Invalid choice")
-	}
+	userChoice(choice)
 
+}
+
+func userChoice(choice uint8) {
+	for choice != 4 {
+		if choice == 1 {
+			fmt.Println("Your balance is", accountBalance)
+		} else if choice == 2 {
+			fmt.Println("Withdraw operations")
+		} else if choice == 3 {
+			fmt.Println("Deposit operations")
+		} else {
+			fmt.Println("Invalid choice")
+		}
+		fmt.Print("Your choice: ")
+		fmt.Scan(&choice)
+	}
+	fmt.Println("Exit...")
 }
