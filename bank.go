@@ -30,19 +30,27 @@ func userChoice(choice uint8) {
 			fmt.Print("You withdraw: ")
 			var withdrawAmount float64
 			fmt.Scan(&withdrawAmount)
+			if withdrawAmount <= 0 {
+				fmt.Println("Wrong amount")
+				continue
+			}
 			if withdrawAmount > accountBalance {
-				fmt.Println("Not enough balance!")
+				fmt.Println("Not enough balance! Available balance is", accountBalance)
 			} else {
-				fmt.Println("Success...")
 				accountBalance -= withdrawAmount
+				fmt.Println("Success... New amount:", accountBalance)
 			}
 		} else if choice == 3 {
 			fmt.Println("Deposit operations")
 			fmt.Print("Your deposit: ")
 			var depositAmount float64
 			fmt.Scan(&depositAmount)
-			fmt.Println("Success...")
+			if depositAmount <= 0 {
+				fmt.Println("Wrong amount")
+				continue
+			}
 			accountBalance += depositAmount
+			fmt.Println("Success... New amount:", accountBalance)
 		} else {
 			fmt.Println("Invalid choice")
 		}
