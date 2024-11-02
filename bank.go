@@ -1,8 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 var accountBalance float64 = 1000
+
+func writeBalanceToFile(balance float64) {
+	balanceString := fmt.Sprint(balance)
+	os.WriteFile("user_balance.txt", []byte(balanceString), 0644)
+}
 
 func main() {
 
@@ -42,6 +50,7 @@ func userChoice(choice uint8) {
 			} else {
 				accountBalance -= withdrawAmount
 				fmt.Println("Success... New amount:", accountBalance)
+				writeBalanceToFile(accountBalance)
 			}
 
 			//break
@@ -56,6 +65,7 @@ func userChoice(choice uint8) {
 			}
 			accountBalance += depositAmount
 			fmt.Println("Success... New amount:", accountBalance)
+			writeBalanceToFile(accountBalance)
 
 			//break
 		default:
